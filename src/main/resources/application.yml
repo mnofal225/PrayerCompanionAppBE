@@ -1,0 +1,18 @@
+spring:
+  components:
+    scan:
+      base-package: com.mobile.companion.remote.quran
+
+beans:
+  quranApiRemoteClient:
+    interface: com.mobile.companion.remote.quran.QuranApiRemoteClient
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+      quran-api:
+        url: https://api.quran.com/api/v4
