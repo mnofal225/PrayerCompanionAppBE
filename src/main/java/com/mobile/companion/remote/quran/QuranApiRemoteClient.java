@@ -1,5 +1,8 @@
 package com.mobile.companion.remote.quran;
 
+import com.mobile.companion.remote.quran.model.ChapterInfoResponse;
+import com.mobile.companion.remote.quran.model.ChapterResponse;
+import com.mobile.companion.remote.quran.model.QuranChaptersResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,12 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface QuranApiRemoteClient {
 
     @GetMapping("/chapters")
-    String getAllChaptersFromRemoteApi();
+    QuranChaptersResponse getAllChaptersFromRemoteApi();
 
     @GetMapping("/chapters/{chapterId}")
-    String getChapterFromRemoteApi(@PathVariable("chapterId") int chapterId);
+    ChapterResponse getChapterFromRemoteApi(@PathVariable("chapterId") int chapterId);
 
     @GetMapping("/chapters/{chapterId}/info")
-    String getChapterInfoFromRemoteApi(@PathVariable("chapterId") int chapterId);
+    ChapterInfoResponse getChapterInfoFromRemoteApi(@PathVariable("chapterId") int chapterId);
 
 }

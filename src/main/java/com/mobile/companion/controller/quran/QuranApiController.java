@@ -1,6 +1,11 @@
 package com.mobile.companion.controller.quran;
 
+import com.mobile.companion.remote.quran.model.ChapterInfoResponse;
+import com.mobile.companion.remote.quran.model.ChapterResponse;
+import com.mobile.companion.remote.quran.model.ChapterV2Response;
+import com.mobile.companion.remote.quran.model.QuranChaptersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import com.mobile.companion.service.quran.QuranApiService;
@@ -13,23 +18,23 @@ public class QuranApiController {
     @Autowired
     private QuranApiService quranApiService;
 
-    @GetMapping("/getUserChapters")
-    public String getUserChapters() {
+    @GetMapping(value = "/getUserChapters", headers = "Accept=application/json")
+    public QuranChaptersResponse getUserChapters() {
         return quranApiService.getAllChapters();
     }
 
-    @GetMapping("/getUserChapters/{chapterId}")
-    public String getChapter(@PathVariable int chapterId) {
+    @GetMapping(value = "/getUserChapters/{chapterId}", headers = "Accept=application/json")
+    public ChapterResponse getChapter(@PathVariable int chapterId) {
         return quranApiService.getChapter(chapterId);
     }
 
-    @GetMapping("/getChapterInfo/{chapterId}")
-    public String getChapterInfo(@PathVariable int chapterId) {
+    @GetMapping(value = "/getChapterInfo/{chapterId}", headers = "Accept=application/json")
+    public ChapterInfoResponse getChapterInfo(@PathVariable int chapterId) {
         return quranApiService.getChapterInfo(chapterId);
     }
 
-    @GetMapping("/getChapterV2/{chapterId}")
-    public String getChapterV2(@PathVariable int chapterId) {
+    @GetMapping(value = "/getUserChapterV2/{chapterId}", headers = "Accept=application/json")
+    public ChapterV2Response getUserChapterV2(@PathVariable int chapterId) {
         return quranApiService.getChapterV2(chapterId);
     }
 }
