@@ -18,7 +18,7 @@ public class QuranApiController {
     @Autowired
     private QuranApiService quranApiService;
 
-    @GetMapping(value = "/getUserChapters", headers = "Accept=application/json")
+    @GetMapping(value = "/getUserChaptersTest", headers = "Accept=application/json")
     public QuranChaptersResponse getUserChapters() {
         return quranApiService.getAllChapters();
     }
@@ -33,7 +33,7 @@ public class QuranApiController {
         return quranApiService.getChapterInfo(chapterId);
     }
 
-    @GetMapping(value = "/getUserChapterV2/{chapterId}", headers = "Accept=application/json")
+    @GetMapping(value = "/getUserChapterDetails/{chapterId}", headers = "Accept=application/json")
     public ChapterV2Response getUserChapterV2(@PathVariable int chapterId) {
         return quranApiService.getChapterV2(chapterId);
     }
